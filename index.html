@@ -3,119 +3,110 @@
   body {
     overflow: hidden;
   }
-
-  .panel1,
-  .panel2,
-  .panel3,
-  .panel4,
-  .panel5,
-  .panel6
+  .panel-wrapper {
+    margin-top: 100px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    position: relative;
+  }
+  .panel-wrapper img
    {
     width: 300px;
     height: 300px;
     backface-visibility: hidden;
     position: absolute;
   }
-  .panel4,
-  .panel5,
-  .panel6
-  {
+  .reflect{
     -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,.2)))
-  }
-
-  .panel-wrapper {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-    position: relative;
   }
 </style>
 <script src='numeric-1.2.6.min.js'></script>
 <script src="index.js"></script>
 <div class="panel-wrapper">
+  <!-- 一段目 -->
   <img src='img1.png' class='panel1' />
   <img src='img2.png' class='panel2' />
   <img src='img3.png' class='panel3' />
 
-  <img src='img1.png' class='panel4' />
-  <img src='img2.png' class='panel5' />
-  <img src='img3.png' class='panel6' />
+  <img src='img1.png' class='panel4 reflect' />
+  <img src='img2.png' class='panel5 reflect' />
+  <img src='img3.png' class='panel6 reflect' />
+  <!-- 二段目 -->
+  <img src='img1.png' class='panel1b' />
+  <img src='img2.png' class='panel2b' />
+  <img src='img3.png' class='panel3b' />
+
+  <img src='img1.png' class='panel4b reflect' />
+  <img src='img2.png' class='panel5b reflect' />
+  <img src='img3.png' class='panel6b reflect' />
 </div>
 
 <script>
+
+  function initPosition(elm1, elm2, x, y){
+    elm1.style.webkitTransform =
+      `matrix3d(
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,-1000,1)`;
+    rotateElement(elm1, 0 + x, 0 + y, 0);
+    // 鏡面用
+    elm2.style.webkitTransform =
+      `matrix3d(
+        1,0,0,0,
+        0,-1,0,0,
+        0,0,1,0,
+        0,0,-1000,1)`;
+    rotateElement(elm2, 17 + x, 0 + y, 0);
+  }
+  // 一段目
   /* panel1 */
-  var elm = document.querySelector('.panel1');
-  elm.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm, 0, 0, 0);
-  // 鏡面用
+  var elm1 = document.querySelector('.panel1');
   var elm4 = document.querySelector('.panel4');
-  elm4.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,-1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm4, 17, 0, 0);
-
-  setInterval(function () {
-    rotateElement(elm, 0, 1, 0);
-    rotateElement(elm4, 0, 1, 0);
-  }, 10)
-
-
+  
   /* panel2 */
   var elm2 = document.querySelector('.panel2');
-  elm2.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm2, 0, 20, 0);
-
-  // 鏡面用
   var elm5 = document.querySelector('.panel5');
-  elm5.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,-1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm5, 17, 20, 0);
-
-  setInterval(function () {
-    rotateElement(elm2, 0, 1, 0);
-    rotateElement(elm5, 0, 1, 0);
-  }, 10)
-
-
 
   /* panel3 */
   var elm3 = document.querySelector('.panel3');
-  elm3.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm3, 0, 40, 0);
-  // 鏡面用
   var elm6 = document.querySelector('.panel6');
-  elm6.style.webkitTransform =
-    `matrix3d(
-      1,0,0,0,
-      0,-1,0,0,
-      0,0,1,0,
-      0,0,-1000,1)`;
-  rotateElement(elm6, 17, 40, 0);
+
+  // 二段目
+  /* panel1 */
+  var elm1b = document.querySelector('.panel1b');
+  var elm4b = document.querySelector('.panel4b');
+  
+  /* panel2 */
+  var elm2b = document.querySelector('.panel2b');
+  var elm5b = document.querySelector('.panel5b');
+
+  /* panel3 */
+  var elm3b = document.querySelector('.panel3b');
+  var elm6b = document.querySelector('.panel6b');
+  initPosition(elm1, elm4, -10, 0);
+  initPosition(elm2, elm5, -10, 20);
+  initPosition(elm3, elm6, -10, 40);
+
+  initPosition(elm1b, elm4b, 10, 0);
+  initPosition(elm2b, elm5b, 10, 20);
+  initPosition(elm3b, elm6b, 10, 40);
 
   setInterval(function () {
+    rotateElement(elm1, 0, 1, 0);
+    rotateElement(elm4, 0, 1, 0);
+    rotateElement(elm2, 0, 1, 0);
+    rotateElement(elm5, 0, 1, 0);
     rotateElement(elm3, 0, 1, 0);
     rotateElement(elm6, 0, 1, 0);
+
+    rotateElement(elm1b, 0, 1, 0);
+    rotateElement(elm4b, 0, 1, 0);
+    rotateElement(elm2b, 0, 1, 0);
+    rotateElement(elm5b, 0, 1, 0);
+    rotateElement(elm3b, 0, 1, 0);
+    rotateElement(elm6b, 0, 1, 0);
   }, 10)
 </script>
