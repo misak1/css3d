@@ -1,0 +1,102 @@
+<style>
+  body {
+    overflow: hidden;
+  }
+
+  .panel1,
+  .panel2,
+  .panel3
+  {
+    width: 300px;
+    height: 300px;
+    backface-visibility: hidden;
+    position: absolute;
+  }
+
+  .panel1 {
+    background: #c00;
+  }
+
+  .panel2 {
+    background: #0c0;
+  }
+
+  .panel3 {
+    background: #00c;
+  }
+
+  .panel-wrapper {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    position: relative;
+  }
+</style>
+<script src='http://www.numericjs.com/lib/numeric-1.2.6.min.js'></script>
+<script src="index.js"></script>
+<div class="panel-wrapper">
+  <div class='panel1'></div>
+  <div class='panel2'></div>
+  <div class='panel3'></div>
+</div>
+
+<script>
+  /* panel1 */
+  var elm = document.querySelector('.panel1');
+  elm.style.webkitTransform =
+    `matrix3d(
+      1,0,0,0,
+      0,1,0,0,
+      0,0,1,0,
+      0,0,-1000,1)`;
+  rotateElement(elm, 0, 0, 15);
+
+  setInterval(function () {
+    rotateElement(elm, 0, 1, 0);
+    var matrix = elm.style.webkitTransform;
+    console.table(matrix3dToArray(matrix));
+  }, 10)
+
+
+  var matrix = elm.style.webkitTransform;
+  console.table(matrix3dToArray(matrix));
+  /* panel2 */
+  var elm2 = document.querySelector('.panel2');
+  elm2.style.webkitTransform =
+    `matrix3d(
+      1,0,0,0,
+      0,1,0,0,
+      0,0,1,0,
+      0,0,-1000,1)`;
+  rotateElement(elm2, 0, 20, 15);
+
+  setInterval(function () {
+    rotateElement(elm2, 0, 1, 0);
+    var matrix = elm2.style.webkitTransform;
+    console.table(matrix3dToArray(matrix));
+  }, 10)
+
+
+  var matrix = elm2.style.webkitTransform;
+  console.table(matrix3dToArray(matrix));
+
+  /* panel3 */
+  var elm3 = document.querySelector('.panel3');
+  elm3.style.webkitTransform =
+    `matrix3d(
+      1,0,0,0,
+      0,1,0,0,
+      0,0,1,0,
+      0,0,-1000,1)`;
+  rotateElement(elm3, 0, 40, 15);
+
+  setInterval(function () {
+    rotateElement(elm3, 0, 1, 0);
+    var matrix = elm3.style.webkitTransform;
+    console.table(matrix3dToArray(matrix));
+  }, 10)
+
+
+  var matrix = elm3.style.webkitTransform;
+  console.table(matrix3dToArray(matrix));
+</script>

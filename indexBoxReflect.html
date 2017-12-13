@@ -1,0 +1,167 @@
+<style>
+  body {
+    overflow: hidden;
+  }
+
+  .panel1,
+  .panel2,
+  .panel3,
+  .panel4,
+  .panel5,
+  .panel6
+   {
+    width: 300px;
+    height: 300px;
+    /* 背面描画 */
+    /* backface-visibility: hidden; */
+    /* これが指定されているとbox-reflectが無効になる。*/
+    position: absolute;
+    /* 鏡面反射 */
+    -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), color-stop(0.4, rgba(0,0,0,0)),to(rgba(0,0,0,0.8)));
+  }
+  /* .panel1{background:#c00;}
+  .panel2{background:#0c0;}
+  .panel3{background:#00c;} */
+
+  .panel-wrapper {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    position: relative;
+  }
+</style>
+<script src='http://www.numericjs.com/lib/numeric-1.2.6.min.js'></script>
+<script src="index.js"></script>
+<div class="panel-wrapper">
+  <img src='img1.png' class='panel1' />
+  <!-- <img src='img2.png' class='panel2' />
+  <img src='img3.png' class='panel3' />
+
+  <img src='img1.png' class='panel4' />
+  <img src='img2.png' class='panel5' />
+  <img src='img3.png' class='panel6' /> -->
+</div>
+
+<script>
+  /* panel1 */
+  // var elm = document.querySelector('.panel1');
+  // elm.style.webkitTransform =
+  //   `matrix3d(
+  //     1,0,0,0,
+  //     0,1,0,0,
+  //     0,0,1,0,
+  //     0,0,-1000,1)`;
+  // rotateElement(elm, 0, 0, 0);
+
+  // setInterval(function () {
+  //   rotateElement(elm, 0, 1, 0);
+  //   var matrix = elm.style.webkitTransform;
+  //   console.table(matrix3dToArray(matrix));
+  // }, 10)
+
+
+  var matrix = elm.style.webkitTransform;
+  console.table(matrix3dToArray(matrix));
+  /* panel2 */
+  // var elm2 = document.querySelector('.panel2');
+  // elm2.style.webkitTransform =
+  //   `matrix3d(
+  //     1,0,0,0,
+  //     0,1,0,0,
+  //     0,0,1,0,
+  //     0,0,-1000,1)`;
+  // rotateElement(elm2, 0, 20, 0);
+
+  // setInterval(function () {
+  //   rotateElement(elm2, 0, 1, 0);
+  //   var matrix = elm2.style.webkitTransform;
+  //   console.table(matrix3dToArray(matrix));
+  // }, 10)
+
+
+  // var matrix = elm2.style.webkitTransform;
+  // console.table(matrix3dToArray(matrix));
+
+  // /* panel3 */
+  // var elm3 = document.querySelector('.panel3');
+  // elm3.style.webkitTransform =
+  //   `matrix3d(
+  //     1,0,0,0,
+  //     0,1,0,0,
+  //     0,0,1,0,
+  //     0,0,-1000,1)`;
+  // rotateElement(elm3, 0, 40, 0);
+
+  // setInterval(function () {
+  //   rotateElement(elm3, 0, 1, 0);
+  //   var matrix = elm3.style.webkitTransform;
+  //   console.table(matrix3dToArray(matrix));
+  // }, 10)
+
+
+  // var matrix = elm3.style.webkitTransform;
+  // console.table(matrix3dToArray(matrix));
+</script>
+
+
+<!-- 2段目 -->
+<script>
+    // /* panel4 */
+    // var elm4 = document.querySelector('.panel4');
+    // elm4.style.webkitTransform =
+    //   `matrix3d(
+    //     1,0,0,0,
+    //     0,1,0,0,
+    //     0,0,1,0,
+    //     0,0,-1000,1)`;
+    // rotateElement(elm4, 20, 0, 0);
+  
+    // setInterval(function () {
+    //   rotateElement(elm4, 0, 1, 0);
+    //   var matrix = elm4.style.webkitTransform;
+    //   console.table(matrix3dToArray(matrix));
+    // }, 10)
+  
+  
+    // var matrix = elm.style.webkitTransform;
+    // console.table(matrix3dToArray(matrix));
+    // /* panel2 */
+    // var elm5 = document.querySelector('.panel5');
+    // elm5.style.webkitTransform =
+    //   `matrix3d(
+    //     1,0,0,0,
+    //     0,1,0,0,
+    //     0,0,1,0,
+    //     0,0,-1000,1)`;
+    // rotateElement(elm5, 20, 20, 0);
+  
+    // setInterval(function () {
+    //   rotateElement(elm5, 0, 1, 0);
+    //   var matrix = elm5.style.webkitTransform;
+    //   console.table(matrix3dToArray(matrix));
+    // }, 10)
+  
+  
+    // var matrix = elm5.style.webkitTransform;
+    // console.table(matrix3dToArray(matrix));
+  
+    // /* panel3 */
+    // var elm6 = document.querySelector('.panel6');
+    // elm6.style.webkitTransform =
+    //   `matrix3d(
+    //     1,0,0,0,
+    //     0,1,0,0,
+    //     0,0,1,0,
+    //     0,0,-1000,1)`;
+    // rotateElement(elm6, 20, 40, 0);
+  
+    // setInterval(function () {
+    //   rotateElement(elm6, 0, 1, 0);
+    //   var matrix = elm6.style.webkitTransform;
+    //   console.table(matrix3dToArray(matrix));
+    // }, 10)
+  
+  
+    // var matrix = elm6.style.webkitTransform;
+    // console.table(matrix3dToArray(matrix));
+  </script>
