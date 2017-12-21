@@ -216,7 +216,7 @@ function rotateElement(elm, rx, ry, rz){
     }
 
     if (rz !== 0){
-        var rz = rotateY(rz);
+        var rz = rotateZ(rz);
         var matrix = numeric.dot(matrix, rz);
     }
     var matrix3d = matrixToMatrix3d(matrix);
